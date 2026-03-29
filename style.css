@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --task-color: #1e1e1e;
+    --primary-text: #e0e0e0;
+    --secondary-text: #a0a0a0;
+    --accent-color: #4fc3f7;
+    --accent-hover: #38b0e3;
+}
+body {
+    height: 100vh;
+    font-family: "Poppins", "Inter", "Roboto", sans-serif;
+    display: flex;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    background-color: #0d1b2a;
+    animation: bg-change 10s linear infinite;
+}
+header {
+    margin-top: 20vh;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-text);
+    font-weight: bold;
+    p {
+        color: var(--secondary-text);
+        margin-top: 0.5rem;
+        font-weight: normal;
+        font-size: 0.8rem;
+    }
+}
+main {
+    margin: 5em auto;
+    width: min(calc(100% - 2rem), 800px);
+}
+main form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+main form input {
+    width: 100%;
+    caret-color: var(--accent-color);
+    background: #0d1b2a;
+    border: 1px solid var(--accent-color);
+    padding: 1rem 1rem 0.5rem 1rem;
+    border-radius: 20px;
+    color: var(--primary-text);
+    transition: 300ms ease;
+}
+main form input::placeholder {
+    color: var(--secondary-text);
+    transition: 200ms ease;
+}
+main form input:focus::placeholder {
+    font-weight: bold;
+}
+main form input:focus {
+    padding-bottom: 1rem;
+    border: 2px solid var(--accent-hover);
+    outline: none;
+}
+main form button {
+    border: none;
+    border-radius: 20px;
+    background-color: var(--accent-color);
+    color: #0d1b2a;
+    padding: 1rem 0;
+    font-weight: bold;
+    width: 100%;
+    transition: 300ms ease;
+}
+main form button:hover {
+    background-color: var(--accent-hover);
+}
+main form button:focus {
+    outline: 2px solid white;
+    transform: scale(1.05);
+}
+#task-container {
+    margin: 2rem auto;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+#task-container h2 {
+    font-size: 1.5rem;
+    color: var(--primary-text);
+    text-align: center;
+}
+#task-container li {
+    width: 100%;
+    color: var(--primary-text);
+    padding: 1rem;
+    background-color: var(--task-color);
+    border-radius: 30px;
+    border: 1px solid white;
+    p {
+        word-break: break-word;
+        text-wrap: balance;
+    }
+}
+#task-container .task-header {
+    display: flex;
+    justify-content: space-between;
+}
+#task-container .task-header > button {
+    background-color: #cccccc;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 50%;
+    transition: 500ms ease;
+}
+.task-header > button.active {
+    transform: rotate(180deg);
+}
+.dropdown {
+    overflow: hidden;
+    margin: 0 0 0 2rem;
+    max-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    transition:
+        max-height 1000ms ease,
+        margin-top 300ms ease;
+}
+.dropdown.active {
+    margin-top: 1rem;
+    max-height: 500px;
+}
+.dropdown button {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    transition: 300ms ease;
+    transform-origin: top;
+}
+.dropdown button:hover {
+    transform: translateY(3px) scale(0.95);
+    font-weight: 500;
+    background-color: #cccccc;
+}
+main ul label {
+    display: flex;
+    font-size: 0.8rem;
+    gap: 1rem;
+    color: var(--primary-text);
+}
+button#sortBtn {
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--accent-color);
+    padding: 0.3rem;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: 500ms ease;
+}
+button#sortBtn.active {
+    rotate: 180deg;
+}
+.optionsForSort {
+    display: flex;
+    margin-top: 0.5rem;
+    flex-direction: column;
+    color: var(--secondary-text);
+    font-size: 0.8rem;
+    transform: translate(50px, -20px);
+    max-height: 0;
+    overflow: hidden;
+    transition: 1000ms ease;
+}
+.optionsForSort.active {
+    padding: 1rem;
+    border: 5px solid black;
+    max-height: 500px;
+}
+@keyframes bg-change {
+    0% {
+        background-color: #0d1b2a;
+    }
+    50% {
+        background-color: #2a0d1b;
+    }
+    100% {
+        background-color: #0d1b2a;
+    }
+}
+.task-controls {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+.optionsForSort,
+.optionsForFilter {
+    position: absolute;
+    top: 120%; /* pushes it below the button */
+    right: 0;
+    color: black;
+    opacity: 0.5;
+    background: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+.control-group p {
+    color: var(--secondary-text);
+    font-size: 0.8rem;
+}
+
+button#filterBtn {
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--accent-color);
+    padding: 0.3rem;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: 500ms ease;
+}
+
+button#filterBtn.active {
+    rotate: 180deg;
+}
+
+.optionsForFilter {
+    display: flex;
+    margin-top: 0.5rem;
+    flex-direction: column;
+    font-size: 0.8rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: 800ms ease;
+}
+
+.optionsForFilter.active {
+    border: 5px solid black;
+    max-height: 500px;
+    padding: 1rem;
+}
+
+.optionsForSort div,
+.optionsForFilter div {
+    cursor: pointer;
+    padding: 0.25rem 0;
+    transition: 200ms ease;
+}
+
+.optionsForSort div:hover,
+.optionsForFilter div:hover {
+    color: var(--primary-text);
+    transform: translateX(4px);
+}
+
+.empty-state {
+    color: var(--secondary-text);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}

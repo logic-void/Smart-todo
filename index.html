@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>To-do List App</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            TO-DO List App
+            <p>Created By Maalkin's billa</p>
+        </header>
+        <main>
+            <form>
+                <input type="text" required placeholder="Add a new task" />
+                <input
+                    type="text"
+                    required
+                    placeholder="Who is this task for?"
+                />
+                <button id="addBtn" type="submit">ADD</button>
+            </form>
+
+            <ul id="task-container">
+                <h2>YOUR TASKS</h2>
+
+                <div class="task-controls">
+                    <div class="control-group">
+                        <p id="sortLabel">Sorted by Oldest First</p>
+                        <button id="sortBtn" type="button">↓</button>
+                        <div class="optionsForSort">
+                            <div>Oldest First</div>
+                            <div>Newest First</div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <p id="filterLabel">Filter: All</p>
+                        <button id="filterBtn" type="button">↓</button>
+                        <div class="optionsForFilter">
+                            <div>All</div>
+                            <div>Pending</div>
+                            <div>In Progress</div>
+                            <div>Completed</div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
